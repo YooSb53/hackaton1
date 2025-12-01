@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회의실 예약 시스템</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>회의실 예약 시스템</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="list">예약 현황</button>
+            <button class="tab-button" data-tab="reservation">예약하기</button>
+            <button class="tab-button" data-tab="manage">내 예약 관리</button>
+        </div>
+
+        <!-- 예약 현황 탭 -->
+        <div id="list" class="tab-content active">
+            <h2>예약 현황</h2>
+            <div class="date-filter">
+                <label for="filterDate">날짜 선택: </label>
+                <input type="date" id="filterDate">
+                <button id="searchBtn">검색</button>
+            </div>
+            <div id="reservationList"></div>
+        </div>
+
+        <!-- 예약하기 탭 -->
+        <div id="reservation" class="tab-content">
+            <h2>회의실 예약</h2>
+            <form id="reservationForm">
+                <div class="form-group">
+                    <label for="room">회의실 선택:</label>
+                    <select id="room" required>
+                        <option value="">회의실을 선택하세요</option>
+                        <option value="room1">1번 회의실 (4인)</option>
+                        <option value="room2">2번 회의실 (6인)</option>
+                        <option value="room3">3번 회의실 (10인)</option>
+                        <option value="room4">대회의실 (20인)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">날짜:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">시간:</label>
+                    <select id="time" required>
+                        <option value="">시간을 선택하세요</option>
+                        <option value="09:00">09:00 - 10:00</option>
+                        <option value="10:00">10:00 - 11:00</option>
+                        <option value="11:00">11:00 - 12:00</option>
+                        <option value="13:00">13:00 - 14:00</option>
+                        <option value="14:00">14:00 - 15:00</option>
+                        <option value="15:00">15:00 - 16:00</option>
+                        <option value="16:00">16:00 - 17:00</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">예약자 이름:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호 (4자리 숫자):</label>
+                    <input type="password" id="password" pattern="\d{4}" maxlength="4" required>
+                </div>
+                <button type="submit">예약하기</button>
+            </form>
+        </div>
+
+
+        <!-- 내 예약 관리 탭 -->
+        <div id="manage" class="tab-content">
+            <h2>내 예약 관리</h2>
+            <div class="form-group">
+                <label for="searchName">예약자 이름: </label>
+                <input type="text" id="searchName">
+            </div>
+            <div class="form-group">
+                <label for="searchPassword">비밀번호: </label>
+                <input type="password" id="searchPassword" maxlength="4">
+                <button id="searchReservationBtn">조회</button>
+            </div>
+            <div id="myReservations"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
